@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FieldService } from "./field.service";
 import { Field } from "./field";
-import { ReferenceData } from "../reference-data";
 
 @Component({
   selector: "sample-fields",
