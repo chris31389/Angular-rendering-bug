@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Approvals Sample App</title>
+        <base href="/" />
+        <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+        <link rel="shortcut icon" href="~/dist/favicon.ico" type="image/x-icon"/>
+        <style>
+            .table { margin-bottom: 0 !important; }
+            .table th{ padding: 0.5rem !important; border-top: 0px !important; }
+            .bg-dark-custom{ background-color: #c1c1c1a6; }
+            body {background-color:#f8f9fa!important; }
+        </style>
+    </head>
+    <body>
+        @RenderBody()
+
+        @RenderSection("scripts", false)
+    </body>
+</html>

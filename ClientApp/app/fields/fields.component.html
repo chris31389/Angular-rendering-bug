@@ -1,0 +1,30 @@
+<div *ngIf="!loading">
+    <div class="card mt-2 mb-2">
+        <div class="card-header bg-dark-custom">
+            <h4>Fields</h4>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Is Required</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="fields">
+                    <tr *ngFor="let field of fields">
+                        <td>
+                            <input type="text" class="form-control" name="value" (keypress)="nameKeyPress($event)" [(ngModel)]="field.name" placeholder="add a name">
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-control" name="isOptional" [checked]="!field.isOptional" (change)="onFieldIsOptionalUpdate(field)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="loading" class="card-body">
+    <h1>Loading...</h1>
+</div>

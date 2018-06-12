@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-4">
+        <h4 class="text-center">Workflows</h4>
+        <ul class="list-group mb-3" *ngIf="workflows">
+            <button *ngFor="let workflow of workflows" type="button" class="list-group-item list-group-item-action" (click)="selectWorkflow(workflow)"
+                [ngClass]="workflow.id === selectedWorkflow.id ? 'list-group-item-success' : 'list-group-item-light'">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="my-0" [innerHtml]="workflow.name"></h6>
+                </div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action list-group-item-primary" (click)="showNewWorkflowForm()">
+                <h6 class="my-0">
+                    <i class="fa fa-plus"></i> New
+                </h6>
+            </button>
+        </ul>
+    </div>
+    <div class="col-md-8" *ngIf="selectedWorkflow">
+        <h2 class="text-center" [innerHtml]="selectedWorkflow.name"></h2>
+        <sample-fields [workflowId]="selectedWorkflow.id"></sample-fields>
+        <div class="card">
+            <div class="card-header bg-dark-custom">
+                <h4>Configuration</h4>
+            </div>
+            <div class="card-body">
+                    <a [href]="getAppUrlLink(selectedWorkflow.id)">Website.com</a>
+                <p>Visit the approvals website to configure the rules about who approves what.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" *ngIf="!selectedWorkflow">
+        <sample-new-workflow (onCreate)="addWorkflow($event)"></sample-new-workflow>
+    </div>
+</div>
