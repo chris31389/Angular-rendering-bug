@@ -1,6 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Workflow } from "./workflow";
+import { Workflow } from "./item";
 import { Observable } from "rxjs";
 
 @Injectable()

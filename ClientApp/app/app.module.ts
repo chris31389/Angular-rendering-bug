@@ -7,11 +7,10 @@ import { CommonModule } from "@angular/common";
 import { AppComponent } from "./app.component";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { WorkflowsComponent } from "./workflows/workflows.component";
+import { WorkflowsComponent } from "./item-list/item-list.component";
 import { FieldsComponent } from "./fields/fields.component";
-import { NewWorkflowComponent } from "./new-workflow/new-workflow.component";
 import { FieldService } from "./fields/field.service";
-import { WorkflowService } from "./workflows/workflow.service";
+import { WorkflowService } from "./item-list/item.service";
 import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
@@ -37,7 +36,6 @@ import { HttpClientModule } from "@angular/common/http";
     AppComponent,
     WorkflowsComponent,
     FieldsComponent,
-    NewWorkflowComponent
   ],
   bootstrap: [AppComponent],
   providers: [

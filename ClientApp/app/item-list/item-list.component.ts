@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { WorkflowService } from "./workflow.service";
-import { Workflow } from "./workflow";
+import { WorkflowService } from "./item.service";
+import { Workflow } from "./item";
 
 @Component({
     selector: "sample-workflows",
-    templateUrl: "./workflows.component.html",
-    styleUrls: ["./workflows.component.css"]
+    templateUrl: "./item-list.component.html",
+    styleUrls: ["./item-list.component.css"]
 })
 export class WorkflowsComponent implements OnInit {
     private workflows: Array<Workflow>;
@@ -25,13 +25,6 @@ export class WorkflowsComponent implements OnInit {
         );
     }
 
-    get canGetAppUrlLink(): boolean {
-        return (
-            this.approvalsAppUrlTemplate !== null &&
-            this.approvalsAppUrlTemplate !== undefined
-        );
-    }
-
     getAppUrlLink = (workflowId: string): string => `https://localhost.com/${workflowId}`;
 
     selectWorkflow = (workflow: Workflow) => (this.selectedWorkflow = workflow);
@@ -42,27 +35,7 @@ export class WorkflowsComponent implements OnInit {
         }
     };
 
-    addWorkflow = (workflow: Workflow) => {
-        if (!this.workflows) this.workflows = new Array<Workflow>();
-        this.workflows.push(workflow);
-        this.selectedWorkflow = workflow;
-    };
-
     showNewWorkflowForm = () => {
         this.selectedWorkflow = undefined;
     };
-
-    removeWorkflow = (workflow: Workflow, event: Event) => {
-        event.stopPropagation();
-        this.workflowService.remove(workflow.id).subscribe(() => {
-            const indexToRemove = this.workflows.indexOf(workflow);
-            this.workflows.splice(indexToRemove, 1);
-        });
-    };
-
-    syncWorkflows = () =>
-        this.workflowService.syncAll().subscribe(workflows => {
-            this.workflows = workflows;
-            this.selectDefaultWorkflow();
-        });
 }
