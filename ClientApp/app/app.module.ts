@@ -5,7 +5,6 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
 import { AppComponent } from "./app.component";
-import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { WorkflowsComponent } from "./item-list/item-list.component";
 import { FieldsComponent } from "./fields/fields.component";
@@ -20,12 +19,6 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: "toast-bottom-full-width",
-      preventDuplicates: true,
-      maxOpened: 1
-    }),
     RouterModule.forRoot([
       { path: "", redirectTo: "workflows", pathMatch: "full" },
       { path: "**", redirectTo: "workflows" },
@@ -39,7 +32,6 @@ import { HttpClientModule } from "@angular/common/http";
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: "ORIGIN_URL", useValue: location.origin },
     WorkflowService,
     FieldService
   ],
